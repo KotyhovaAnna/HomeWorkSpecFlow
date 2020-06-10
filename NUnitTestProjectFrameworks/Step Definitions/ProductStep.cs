@@ -21,19 +21,12 @@ namespace NUnitTestProjectFrameworks.Step_Definitions
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
             driver.Url = url;
-            //driver.Navigate().GoToUrl(url);
-        }
-        [When(@"I type the word ""(.*)"" in the Name field")]
-        public void WhenITypeInTheName(string Name)
-        {
-            new LoginPage(driver).LoginMetod(new Login(Name, null));
-
         }
 
-        [When(@"I type the word ""(.*)"" in the Password field")]
-        public void WhenITypeInThePassword(string Password)
+        [When(@"I type the word ""(.*)"" in the Name field and ""(.*)"" in the Password field")]
+        public void WhenITypeMyValueNameAndPussword(string name, string password)
         {
-            new LoginPage(driver).LoginMetod(new Login(null, Password));
+            new LoginPage(driver).LoginMetod(new Login(name, password));
         }
 
         [When(@"I click the login button")]
@@ -59,49 +52,50 @@ namespace NUnitTestProjectFrameworks.Step_Definitions
         [When(@"I type the word ""(.*)"" in the in section ProductName")]
         public void WhenITypeInProductName(string ProductName)
         {
-            new AddProductPage(driver).AddNewProduct(new Product(ProductName, null, null, null, null, null, null, null));
+            new AddProductPage(driver).SendName(new Product(ProductName, null, null, null, null, null, null, null));
         }
 
-        [When(@"I select ""(.*)"" in the in section Category")]
-        public void WhenITypeInCategory(string CategoryID)
+        [When(@"I select Product in the in section Category")]
+        public void ISelectCategory()
         {
-            new AddProductPage(driver).AddNewProduct(new Product(null, CategoryID, null, null, null, null, null, null));
+            new AddProductPage(driver).Category();
         }
 
-        [When(@"I select ""(.*)"" in the in section Supplier")]
-        public void WhenITypeInSupplier(string SupplierId)
+        [When(@"I select Product in the in section Supplier")]
+        public void ISelectSupplier()
         {
-            new AddProductPage(driver).AddNewProduct(new Product(null, null, SupplierId, null, null, null, null, null));
+            new AddProductPage(driver).Supplier();
         }
+
 
         [When(@"I type the value ""(.*)"" in the in section UnitPrice")]
         public void WhenITypeInUnitPrice(string UnitPrice)
         {
-            new AddProductPage(driver).AddNewProduct(new Product(null, null, null, UnitPrice, null, null, null, null));
+            new AddProductPage(driver).UnitPrice(new Product(null, null, null, UnitPrice, null, null, null, null));
         }
 
         [When(@"I type the value ""(.*)"" in the in section QuantityPerUnit")]
         public void WhenITypeInQuantityPerUnit(string QuantityPerUnit)
         {
-            new AddProductPage(driver).AddNewProduct(new Product(null, null, null, null, QuantityPerUnit, null, null, null));
+            new AddProductPage(driver).QuantityPerUnit(new Product(null, null, null, null, QuantityPerUnit, null, null, null));
         }
 
         [When(@"I type the value ""(.*)"" in the in section UnitsInStock")]
         public void WhenITypeInUnitsInStock(string UnitsInStock)
         {
-            new AddProductPage(driver).AddNewProduct(new Product(null, null, null, null, null, UnitsInStock, null, null));
+            new AddProductPage(driver).UnitsInStock(new Product(null, null, null, null, null, UnitsInStock, null, null));
         }
 
         [When(@"I type the value ""(.*)"" in the in section UnitsOnOrder")]
         public void WhenITypeInUnitsOnOrder(string UnitsOnOrder)
         {
-            new AddProductPage(driver).AddNewProduct(new Product(null, null, null, null, null, null, UnitsOnOrder, null));
+            new AddProductPage(driver).UnitsOnOrder(new Product(null, null, null, null, null, null, UnitsOnOrder, null));
         }
 
         [When(@"I type the value ""(.*)"" in the in section ReorderLevel")]
         public void WhenITypeInReorderLevel(string ReorderLevel)
         {
-            new AddProductPage(driver).AddNewProduct(new Product(null, null, null, null, null, null, null, ReorderLevel));
+            new AddProductPage(driver).ReorderLevel(new Product(null, null, null, null, null, null, null, ReorderLevel));
         }
 
         [When(@"I click the send button")]
